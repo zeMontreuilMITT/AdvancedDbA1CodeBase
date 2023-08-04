@@ -1,10 +1,14 @@
 ﻿using System.Reflection.Metadata.Ecma335;
+using System.Xml.Linq;
 
 namespace WebApplication2.Models
 {
     public class Laptop
     {
-        public Guid Number { get; set; }
+        public Guid LaptopId { get; set; }
+
+        public int BrandId { get; set; }
+        public Brand Brand { get; set; } 
 
         private string _model;
         
@@ -15,7 +19,12 @@ namespace WebApplication2.Models
             {
                 if (string.IsNullOrEmpty(value) || value.Length < 3)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(value), "Laptop model name must be at least three characters in length.");
+                    throw new ArgumentOutOfRangeException(nameof(value), "Laptop " +
+                        "model name must be at least three characters in length.");
+                }
+                else
+                {
+                    _model = value;
                 }
             }
         }
@@ -36,9 +45,7 @@ namespace WebApplication2.Models
         
         public LaptopCondition Condition { get; set; }
         
-        public int BrandId { get; set; }
-        
-        public Brand Brand { get; set; }
+        public HashSet<Laptop_Store> LaptopStores { get; set; } = new HashSet<Laptop_Store>();
     }
 
     public enum LaptopCondition
