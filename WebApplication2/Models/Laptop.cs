@@ -7,7 +7,7 @@ namespace WebApplication2.Models
         public Guid Number { get; set; }
 
         private string _model;
-        
+
         public string Model
         {
             get => _model;
@@ -17,12 +17,18 @@ namespace WebApplication2.Models
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Laptop model name must be at least three characters in length.");
                 }
+                // set model to value to assign values to property
+                _model = value;
             }
         }
 
-        private decimal _price;
+        public int Quantity { get; set; }
 
-        public decimal Price { get => _price; 
+        private double _price;
+
+        public double Price
+        {
+            get => _price;
             set
             {
                 if (value < 0)
@@ -33,12 +39,31 @@ namespace WebApplication2.Models
                 _price = value;
             }
         }
-        
+
         public LaptopCondition Condition { get; set; }
-        
+
         public int BrandId { get; set; }
-        
+
         public Brand Brand { get; set; }
+
+        public List<Store> Stores { get; set; }
+
+        public Laptop()
+        {
+
+        }
+
+        public Laptop(Guid number, string model, double price, LaptopCondition condition,
+            Brand brand, int quantity)
+        {
+            Number = number;
+            Model = model;
+            Price = price;
+            Condition = condition;
+            Brand = brand;
+            Stores = new List<Store>();
+            Quantity = quantity;
+        }
     }
 
     public enum LaptopCondition
@@ -47,4 +72,6 @@ namespace WebApplication2.Models
         Refurbished,
         Rental
     }
+
+    
 }

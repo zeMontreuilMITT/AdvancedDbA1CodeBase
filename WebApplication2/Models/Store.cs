@@ -9,11 +9,12 @@
 
         public string Province { get; set; }
 
-        public Laptop Laptops { get; set; }
+        public HashSet <Laptop> Laptops { get; set; } = new HashSet<Laptop>();
 
         private void SetProvince(string province)
         {
-            // set string array to restrict provinces
+        // set string array to restrict provinces
+        // https://www.w3schools.com/cs/cs_arrays.php
             string[] canadaProvinces = 
                 { 
                 "Alberta",
