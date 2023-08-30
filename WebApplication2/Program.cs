@@ -202,6 +202,7 @@ app.MapPost("/stores/{storeNumber}/{laptopNumber}/changeQuantity", (Guid storeNu
 app.Run();
 
 
+
 static class InternalDatabase
 {
 
