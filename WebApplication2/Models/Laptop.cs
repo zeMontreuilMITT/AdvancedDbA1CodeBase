@@ -4,10 +4,14 @@ namespace WebApplication2.Models
 {
     public class Laptop
     {
+        // each laptop can appear in many stores
         public Guid Number { get; set; }
 
         private string _model;
         
+        public Store Store { get; set; }
+        public int StoreId { get; set; }
+
         public string Model
         {
             get => _model;
@@ -16,6 +20,10 @@ namespace WebApplication2.Models
                 if (string.IsNullOrEmpty(value) || value.Length < 3)
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Laptop model name must be at least three characters in length.");
+                }
+                else
+                {
+                    _model = value;
                 }
             }
         }

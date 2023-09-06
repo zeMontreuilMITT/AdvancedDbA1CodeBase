@@ -13,6 +13,10 @@
                 {
                     throw new ArgumentOutOfRangeException(nameof(value), "Brand name must be at least three characters in length.");
                 }
+                else
+                {
+                    _name = value;
+                }
             }
         }
 
